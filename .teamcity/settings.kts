@@ -37,6 +37,7 @@ object Build : BuildType({
 
     params {
         text("text_parameter", "value", allowEmpty = true)
+        param("parameter", "new_one")
     }
 
     vcs {
