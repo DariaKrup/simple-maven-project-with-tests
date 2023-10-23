@@ -32,7 +32,7 @@ project {
     buildType(Build)
 
     params {
-        text("text_parameter", "text_value", allowEmpty = false)
+        text("text_parameter", "text_value", readOnly=true, allowEmpty = false)
     }
 }
 
