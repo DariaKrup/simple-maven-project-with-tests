@@ -30,6 +30,10 @@ version = "2023.05"
 project {
 
     buildType(Build)
+
+    params {
+        text("text_parameter", "text_value", allowEmpty = false)
+    }
 }
 
 object Build : BuildType({
