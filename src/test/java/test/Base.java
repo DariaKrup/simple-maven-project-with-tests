@@ -32,9 +32,9 @@ class Base {
     protected void run() {
         double r = Math.random();
         if (r < 0.1) {
-            fail("oops");
+            fail("Test is failed");
         } else if (r < 0.2) {
-            throw new AssumptionViolatedException("skipping test");
+            throw new AssumptionViolatedException("Skipping test");
         }
     }
 
