@@ -41,6 +41,7 @@ object Build : BuildType({
 
     params {
         text("text_parameter", "text_value", readOnly=true, allowEmpty = true)
+        text("parameter", "text", allowEmpty = false)
     }
 
     vcs {
