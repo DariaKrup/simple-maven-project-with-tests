@@ -36,7 +36,7 @@ object Build : BuildType({
     name = "Build"
 
     params {
-        text("text_parameter", "value", allowEmpty = true)
+        text("text_parameter", "text_value", allowEmpty = true)
     }
 
     vcs {
