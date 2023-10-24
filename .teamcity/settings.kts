@@ -31,6 +31,32 @@ project {
 
     buildType(Build)
 
+    features {
+        amazonEC2CloudImage {
+            id = "PROJECT_EXT_5"
+            profileId = "amazon-1"
+            agentPoolId = "-2"
+            imagePriority = 5
+            name = "Ubuntu Agent"
+            vpcSubnetId = "subnet-0c23f411b0800b216"
+            keyPairName = "daria.krupkina"
+            instanceType = "t2.medium"
+            securityGroups = listOf("sg-072d8bfa0626ea2a6")
+            source = Source("ami-0817025aa39c203c6")
+        }
+        amazonEC2CloudProfile {
+            id = "amazon-1"
+            name = "Cloud AWS Profile"
+            serverURL = "http://10.128.93.57:8124"
+            terminateIdleMinutes = 0
+            region = AmazonEC2CloudProfile.Regions.EU_WEST_DUBLIN
+            authType = accessKey {
+                keyId = "credentialsJSON:c0beb179-a7a4-44f1-9f81-ffe1641fda6c"
+                secretKey = "credentialsJSON:ec56aca9-5346-4c26-b964-49b3a9384fc9"
+            }
+        }
+    }
+
     params {
         text("text_parameter", "text_value", readOnly=true, allowEmpty = false)
     }
