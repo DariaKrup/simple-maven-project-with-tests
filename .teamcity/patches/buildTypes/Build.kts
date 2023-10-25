@@ -24,6 +24,14 @@ changeBuildType(RelativeId("Build")) {
         }
         insert(1) {
             maven {
+                name = "Maven Build step (1)"
+                id = "MavenNew"
+                goals = "clean test"
+                runnerArgs = "-Dmaven.test.failure.ignore=true"
+            }
+        }
+        insert(2) {
+            maven {
                 name = "New build step"
                 id = "Maven"
                 goals = "clean test"
