@@ -1,6 +1,7 @@
 package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildSteps.MavenBuildStep
 import jetbrains.buildServer.configs.kotlin.buildSteps.maven
 import jetbrains.buildServer.configs.kotlin.ui.*
 
@@ -17,6 +18,10 @@ changeBuildType(RelativeId("Build")) {
         }
     }
     steps {
+        update<MavenBuildStep>(0) {
+            name = "Maven Build step"
+            clearConditions()
+        }
         insert(1) {
             maven {
                 name = "New build step"
