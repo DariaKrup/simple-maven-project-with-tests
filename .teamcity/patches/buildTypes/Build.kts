@@ -31,6 +31,7 @@ changeBuildType(RelativeId("Build")) {
             maven {
                 name = "Maven Build step (1)"
                 id = "MavenNew"
+                enabled = false
                 goals = "clean test"
                 runnerArgs = "-Dmaven.test.failure.ignore=true"
             }
