@@ -52,11 +52,11 @@ object Build : BuildType({
         select("select", "", label = "Parameter with multiple selection",
                 allowMultiple = true, valueSeparator = ";",
                 options = listOf("a1" to "1", "a2" to "2", "a6" to "9"))
-        text("text_parameter_any", "not_empty_text", display = ParameterDisplay.HIDDEN, allowEmpty = true)
         hashiCorpVaultParameter {
             name = "env.AWS_SECRET_ACCESS_KEY"
             query = "aws/data/access!/AWS_SECRET_ACCESS_KEY"
         }
+        text("text_parameter_any", "not_empty_text", display = ParameterDisplay.HIDDEN, allowEmpty = true)
         text("text_agent_number", "31", display = ParameterDisplay.HIDDEN, readOnly = true, allowEmpty = true)
         hashiCorpVaultParameter {
             name = "env.AWS_ACCESS_KEY_ID"
@@ -68,7 +68,7 @@ object Build : BuildType({
         text("text_parameter_regex", "a1",
               regex = "a1*", validationMessage = "REGEX check failed!")
         text("text_parameter_not_empty", "", label = "Not empty parameter", description = "Fill this field", display = ParameterDisplay.PROMPT, allowEmpty = false)
-        param("system.JVM_PROPERTY", "%env.JDK_1_8%%")
+        text("system.JVM_PROPERTY", "%env.JDK_1_8%", allowEmpty = true)
     }
 
     vcs {
